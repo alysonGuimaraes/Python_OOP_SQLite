@@ -11,7 +11,7 @@ print(guimaraes)
 print(guimaraes.nome)
 print(guimaraes.id)
 
-print("Daqui pra frente é acesso ao banco de dados.")
+print("Daqui pra frente é acesso ao banco de dados.\n")
 # Chama objeto de banco de dados
 db = Database()
 
@@ -19,6 +19,14 @@ db = Database()
 pessoaDAO = PessoaDAO(db.conexao, db.cursor)
 
 # Quero carregar uma lista com o que veio do banco de dados
+pessoas = pessoaDAO.getAll(True)
+for pessoa in pessoas:
+  print(pessoa)
+
+# Criar um objeto com qualquer ator/atriz/diretor/diretora e consulta o banco de novo
+novo = Pessoa(0, "Denzel Washington")
+pessoaDAO.save(novo)
+
 pessoas = pessoaDAO.getAll(True)
 for pessoa in pessoas:
   print(pessoa)
